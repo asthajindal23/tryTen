@@ -5,15 +5,29 @@
 </script>
 {% endblock %}
 
-{% block content %}
+{% block jquery%}
+$(function){
+	var $form = $('#payment-form');
+	$form.submit(function(event){
+	$form.find('.submit').prop('disabled', true);
 
-<form action="" method="POST" id="payment-form">
+	Stripe.card.createToken($form, stripeResponseHandler);
+
+	return false;
+	});
+});
+{% endblock %}
+
+{% block content %}
+<div class='row'>
+<div class="col-sm-6 col-sm-offset-3">
+<form class='form' action="" method="POST" id="payment-form"> {% csrf_token %}
 <span class="payment-errors"></span>
 
  <div class="form-row">
    <label>
   	<span>Card Number</span>
-  	<input type="text" size="20" data-stripe="number" >
+  	<input class='form-control' type="text" size="20" data-stripe="number" >
    </label>
  </div>
 
@@ -36,5 +50,6 @@
 
   <input type="submit" class="submit" value="Submit Payment" >
 </form>
-
+</div>
+</div>
 {% endblock %}
