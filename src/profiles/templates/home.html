@@ -2,37 +2,95 @@
 {% load staticfiles %}
 {% block styles %}
 <style>
+.container
+{
+  background-color: #0CC;
+}
 .jumbotron{
 	text-align: center;
+  background-color: pink;
+  color:purple;
+
+}
+.try
+{
+  background-color: pink;
+  color:red;
+  font-family:ar blanca;
+  font-size:32px;
+}
+.asd{
+  text-decoration:underline;
+  font-family:"Times New Roman", Times, serif;
+  font-weight:100;
+  font-size:30px;
 }
 </style>
+<div class="container">
 {% endblock %}
 
 {% block jumbotron %}
 <div class="jumbotron">
-        <h1>Theme example</h1>
-        <p>This is a template showcasing the optional theme stylesheet included in Bootstrap. Use it as a starting point to create something more unique by building on or modifying it.</p>
+        <h1>SPECIALS</h1>
+        <p>Taste it !!Make it Better!!!</p>
       </div>
 {% endblock %}
+
 
 {% block content %}
 
 
 
-<div class="row">
+
+
+
+
+        {% if request.user.is_authenticated %}
+        <!--<h3 class="jumbotron">Hello {{ request.user }}</h3>-->
         <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+        <a href="a"><img src="{% static 'img/noodles.jpg' %}" height="200" width="200"class="img-responsive"/></a>
+        <p class="asd">Noodles</p>
         </div>
+        <div class="col-md-4">
+        <a href="a"><img src="{% static 'img/burger.jpg' %}" height="200" width="200"class="img-responsive"/></a>
+        <p class="asd">Burger</p>
+        </div>
+<div class="col-md-4">
+        <a href="a"><img src="{% static 'img/fries.jpg' %}" height="200" width="200" class="img-responsive"/></a>
+        <p class="asd">French Fries</p>
+        </div>
+        <br>
+<div class="col-md-4">
+        <a href="a"><img src="{% static 'img/icecream.jpg' %}" height="200" width="200"class="img-responsive"/></a>
+        <p class="asd">Sundae</p>
+        </div>
+<div class="col-md-4">
+        <a href="a"><img src="{% static 'img/manchurian.jpg' %}" height="200" width="200"class="img-responsive"/></a>
+        <p class="asd">Manchurian</p>
+        </div>
+
+
+        {% else %}
+
+        <div class="row">
+<div class="try">
+        <div class="col-md-4" >
+          
+          
+          <p >Product strives to bring the best personal experience to people around
+          the world.</p>
+          
+          
+        </div></div>
+       
+
+
+
+ 
         <div class="col-md-4">
         <a href="a"><img src="{% static 'img/home.jpg' %}" class="img-responsive"/></a>
        </div>
         <div class="col-md-4">
-        {% if request.user.is_authenticated %}
-        <h3>Hello {{ request.user }}</h3>
-
-        {% else %}
          <form class="login" method="POST" action="{% url 'account_login' %}">
          {% csrf_token %}
   
@@ -50,4 +108,4 @@
         </div>
       </div>
 {% endblock %}
-
+</div>

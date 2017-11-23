@@ -6,7 +6,7 @@ from .forms import contactForm
 # Create your views here.
 def contact(request):
 
-	title = 'Contact'
+	title = 'Eatables Feedback'
 	form = contactForm(request.POST or None)
 	confirm_message = None
 	
